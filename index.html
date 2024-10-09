@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Můj Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        body {
+            background-color: #f8f8f8;
+        }
+        .hero {
+            background-color: #007bff;
+            color: white;
+            padding: 30px 0;
+        }
+        .post {
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Záhlaví -->
+<section class="hero">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">Můj Blog</h1>
+            <p class="subtitle">Vítejte na mém blogu!</p>
+        </div>
+    </div>
+</section>
+
+<!-- Navigace -->
+<nav class="navbar is-light">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">Můj Blog</a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="#">Domů</a>
+                <a class="navbar-item" href="#">O mně</a>
+                <a class="navbar-item" href="#">Blog</a>
+                <a class="navbar-item" href="#">Kontakt</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hlavní obsah -->
+<div class="container mt-5">
+    <div class="columns">
+        <div class="column is-two-thirds">
+            <h2 class="title">Příspěvky</h2>
+
+            <!-- Příspěvek 1 -->
+            <div class="post">
+                <h3 class="title is-4">Název příspěvku 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae venenatis odio. Fusce vehicula.</p>
+                <a href="#" class="button is-link">Číst dál</a>
+            </div>
+
+            <!-- Příspěvek 2 -->
+            <div class="post">
+                <h3 class="title is-4">Název příspěvku 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae venenatis odio. Fusce vehicula.</p>
+                <a href="#" class="button is-link">Číst dál</a>
+            </div>
+
+            <!-- Další příspěvky můžete přidat zde -->
+        </div>
+
+        <!-- Postranní panel -->
+        <div class="column is-one-third">
+            <h3 class="title is-5">Odkazy</h3>
+            <ul class="menu">
+                <li><a class="menu-item" href="#">Nejnovější příspěvky</a></li>
+                <li><a class="menu-item" href="#">Populární příspěvky</a></li>
+                <li><a class="menu-item" href="#">Kategorie</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Patička -->
+<footer class="footer mt-5">
+    <div class="content has-text-centered">
+        <p>&copy; 2024 Můj Blog. Všechna práva vyhrazena.</p>
+    </div>
+</footer>
+
+</body>
+</html>

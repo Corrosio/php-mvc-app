@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .modal.is-active {
+            display: flex;
+        }
+
+        .modal {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Záhlaví -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">Správa blogu</h1>
+                <p class="subtitle">Admin panel</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigace -->
+    <nav class="navbar is-light">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#">Můj Blog</a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="#">Domů</a>
+                    <a class="navbar-item" href="#">O mně</a>
+                    <a class="navbar-item" href="#">Blog</a>
+                    <a class="navbar-item" href="#">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="tabs">
+            <ul>
+                <li class="is-active"><a>Články</a></li>
+                <li><a>Komentáře</a></li>
+                <li><a>Uživatelé</a></li>
+                <li><a>Role</a></li>
+            </ul>
+        </div>
+
+        <div class="tab-section" id="articles">
+            <div class="content">
+                <button class="button is-link" id="add-article-button"><i class="fas fa-plus"></i> Přidat nový
+                    článek</button>
+                <table class="table is-fullwidth mt-3">
+                    <thead>
+                        <tr>
+                            <th>Název článku</th>
+                            <th>Autor</th>
+                            <th>Datum</th>
+                            <th>Akce</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Článek 1</td>
+                            <td>Autor 1</td>
+                            <td>2024-01-01</td>
+                            <td>
+                                <button class="button is-small is-warning edit-article-button" data-title="Článek 1"
+                                    data-author="Autor 1" data-date="2024-01-01"><i class="fas fa-edit"></i>
+                                    Upravit</button>
+                                <button class="button is-small is-danger"><i class="fas fa-trash-alt"></i>
+                                    Smazat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Článek 2</td>
+                            <td>Autor 2</td>
+                            <td>2024-02-01</td>
+                            <td>
+                                <button class="button is-small is-warning edit-article-button" data-title="Článek 2"
+                                    data-author="Autor 2" data-date="2024-02-01"><i class="fas fa-edit"></i>
+                                    Upravit</button>
+                                <button class="button is-small is-danger"><i class="fas fa-trash-alt"></i>
+                                    Smazat</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-section" id="comments" style="display: none;">
+            <div class="content">
+                <h2 class="subtitle">Komentáře</h2>
+                <table class="table is-fullwidth mt-3">
+                    <thead>
+                        <tr>
+                            <th>Uživatelské jméno</th>
+                            <th>Článek</th>
+                            <th>Komentář</th>
+                            <th>Datum</th>
+                            <th>Akce</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>uživatel1</td>
+                            <td>Článek 1</td>
+                            <td>Skvělý článek, díky!</td>
+                            <td>2024-01-02</td>
+                            <td>
+                                <button class="button is-small is-danger"><i class="fas fa-trash-alt"></i>
+                                    Smazat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>uživatel2</td>
+                            <td>Článek 2</td>
+                            <td>Velmi zajímavý pohled na věc.</td>
+                            <td>2024-02-03</td>
+                            <td>
+                                <button class="button is-small is-danger"><i class="fas fa-trash-alt"></i>
+                                    Smazat</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-section" id="users" style="display: none;">
+            <div class="content">
+                <button class="button is-link" id="add-user-button"><i class="fas fa-plus"></i> Přidat nového
+                    uživatele</button>
+                <table class="table is-fullwidth mt-3">
+                    <thead>
+                        <tr>
+                            <th>Uživatelské jméno</th>
+                            <th>Role</th>
+                            <th>Akce</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>uživatel1</td>
+                            <td>Admin</td>
+                            <td>
+                                <button class="button is-small is-warning edit-user-button" data-username="uživatel1"
+                                    data-role="Admin"><i class="fas fa-edit"></i> Upravit</button>
+                                <button class="button is-small is-danger"><i class="fas fa-trash-alt"></i>
+                                    Smazat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>uživatel2</td>
+                            <td>Editor</td>
+                            <td>
+                                <button class="button is-small is-warning edit-user-button" data-username="uživatel2"
+                                    data-role="Editor"><i class="fas fa-edit"></i> Upravit</button>
+                                <button class="button is-small is-danger"><i class="fas fa-trash-alt"></i>
+                                    Smazat</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-section" id="roles" style="display: none;">
+            <div class="content">
+                <button class="button is-link" id="add-role-button"><i class="fas fa-plus"></i> Přidat novou
+                    roli</button>
+                <table class="table is-fullwidth mt-3">
+                    <thead>
+                        <tr>
+                            <th>Název role</th>
+                            <th>Popis</th>
+                            <th>Akce</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Admin</td>
+                            <td>Má plný přístup k administraci.</td>
+                            <td>
+                                <button class="button is-small is-warning edit-role-button" data-role="Admin"
+                                    data-description="Má plný přístup k administraci."><i class="fas fa-edit"></i>
+                                    Upravit</button>
+                                <button class="button is-small is-danger"><i class="fas fa-trash-alt"></i>
+                                    Smazat</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Editor</td>
+                            <td>Může upravovat články a komentáře.</td>
+                            <td>
+                                <button class="button is-small is-warning edit-role-button" data-role="Editor"
+                                    data-description="Může upravovat články a komentáře."><i class="fas fa-edit"></i>
+                                    Upravit</button>
+                                <button class="button is-small is-danger"><i class="fas fa-trash-alt"></i>
+                                    Smazat</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modální okno pro přidání článku -->
+    <div class="modal" id="add-article-modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <h2 class="title">Přidat nový článek</h2>
+                <div class="field">
+                    <label class="label">Název článku</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Název článku">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Obsah článku</label>
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Obsah článku"></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-link" id="save-article-button">Uložit článek</button>
+                        <button class="button" id="cancel-article-button">Zrušit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <!-- Modální okno pro úpravu článku -->
+    <div class="modal" id="edit-article-modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <h2 class="title">Upravit článek</h2>
+                <div class="field">
+                    <label class="label">Název článku</label>
+                    <div class="control">
+                        <input class="input" type="text" id="edit-article-title" placeholder="Název článku">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Obsah článku</label>
+                    <div class="control">
+                        <textarea class="textarea" id="edit-article-content" placeholder="Obsah článku"></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-link" id="save-edited-article-button">Uložit změny</button>
+                        <button class="button" id="cancel-edit-article-button">Zrušit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <!-- Modální okno pro přidání uživatele -->
+    <div class="modal" id="add-user-modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <h2 class="title">Přidat nového uživatele</h2>
+                <div class="field">
+                    <label class="label">Uživatelské jméno</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Uživatelské jméno">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Role</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Role">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-link" id="save-user-button">Uložit uživatele</button>
+                        <button class="button" id="cancel-user-button">Zrušit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <!-- Modální okno pro úpravu uživatele -->
+    <div class="modal" id="edit-user-modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <h2 class="title">Upravit uživatele</h2>
+                <div class="field">
+                    <label class="label">Uživatelské jméno</label>
+                    <div class="control">
+                        <input class="input" type="text" id="edit-user-username" placeholder="Uživatelské jméno">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Role</label>
+                    <div class="control">
+                        <input class="input" type="text" id="edit-user-role" placeholder="Role">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-link" id="save-edited-user-button">Uložit změny</button>
+                        <button class="button" id="cancel-edit-user-button">Zrušit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <!-- Modální okno pro přidání role -->
+    <div class="modal" id="add-role-modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <h2 class="title">Přidat novou roli</h2>
+                <div class="field">
+                    <label class="label">Název role</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Název role">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Popis</label>
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Popis role"></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-link" id="save-role-button">Uložit roli</button>
+                        <button class="button" id="cancel-role-button">Zrušit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <!-- Modální okno pro úpravu role -->
+    <div class="modal" id="edit-role-modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <h2 class="title">Upravit roli</h2>
+                <div class="field">
+                    <label class="label">Název role</label>
+                    <div class="control">
+                        <input class="input" id="edit-role-name" type="text" placeholder="Název role">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Popis</label>
+                    <div class="control">
+                        <textarea class="textarea" id="edit-role-description" placeholder="Popis role"></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-link" id="save-edited-role-button">Uložit změny</button>
+                        <button class="button" id="cancel-edit-role-button">Zrušit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tabs li');
+            const tabSections = document.querySelectorAll('.tab-section');
+
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('is-active'));
+                    tabSections.forEach(section => section.style.display = 'none');
+
+                    tab.classList.add('is-active');
+                    tabSections[index].style.display = 'block';
+                });
+            });
+
+            // Modální okno pro články
+            const addArticleButton = document.getElementById('add-article-button');
+            const addArticleModal = document.getElementById('add-article-modal');
+            const cancelArticleButton = document.getElementById('cancel-article-button');
+
+            addArticleButton.addEventListener('click', () => {
+                addArticleModal.classList.add('is-active');
+            });
+
+            cancelArticleButton.addEventListener('click', () => {
+                addArticleModal.classList.remove('is-active');
+            });
+
+            addArticleModal.querySelector('.modal-close').addEventListener('click', () => {
+                addArticleModal.classList.remove('is-active');
+            });
+
+            // Modální okno pro úpravu článku
+            const editArticleButtons = document.querySelectorAll('.edit-article-button');
+            const editArticleModal = document.getElementById('edit-article-modal');
+            const cancelEditArticleButton = document.getElementById('cancel-edit-article-button');
+
+            editArticleButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    document.getElementById('edit-article-title').value = button.dataset.title;
+                    document.getElementById('edit-article-content').value = button.dataset.author;
+                    editArticleModal.classList.add('is-active');
+                });
+            });
+
+            cancelEditArticleButton.addEventListener('click', () => {
+                editArticleModal.classList.remove('is-active');
+            });
+
+            editArticleModal.querySelector('.modal-close').addEventListener('click', () => {
+                editArticleModal.classList.remove('is-active');
+            });
+
+            // Modální okno pro uživatele
+            const addUserButton = document.getElementById('add-user-button');
+            const addUserModal = document.getElementById('add-user-modal');
+            const cancelUserButton = document.getElementById('cancel-user-button');
+
+            addUserButton.addEventListener('click', () => {
+                addUserModal.classList.add('is-active');
+            });
+
+            cancelUserButton.addEventListener('click', () => {
+                addUserModal.classList.remove('is-active');
+            });
+
+            addUserModal.querySelector('.modal-close').addEventListener('click', () => {
+                addUserModal.classList.remove('is-active');
+            });
+
+            // Modální okno pro úpravu uživatele
+            const editUserButtons = document.querySelectorAll('.edit-user-button');
+            const editUserModal = document.getElementById('edit-user-modal');
+            const cancelEditUserButton = document.getElementById('cancel-edit-user-button');
+
+            editUserButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    document.getElementById('edit-user-username').value = button.dataset.username;
+                    document.getElementById('edit-user-role').value = button.dataset.role;
+                    editUserModal.classList.add('is-active');
+                });
+            });
+
+            cancelEditUserButton.addEventListener('click', () => {
+                editUserModal.classList.remove('is-active');
+            });
+
+            editUserModal.querySelector('.modal-close').addEventListener('click', () => {
+                editUserModal.classList.remove('is-active');
+            });
+
+            // Modální okno pro role
+            const addRoleButton = document.getElementById('add-role-button');
+            const addRoleModal = document.getElementById('add-role-modal');
+            const cancelRoleButton = document.getElementById('cancel-role-button');
+
+            addRoleButton.addEventListener('click', () => {
+                addRoleModal.classList.add('is-active');
+            });
+
+            cancelRoleButton.addEventListener('click', () => {
+                addRoleModal.classList.remove('is-active');
+            });
+
+            addRoleModal.querySelector('.modal-close').addEventListener('click', () => {
+                addRoleModal.classList.remove('is-active');
+            });
+
+            // Modální okno pro úpravu role
+            const editRoleButtons = document.querySelectorAll('.edit-role-button');
+            const editRoleModal = document.getElementById('edit-role-modal');
+            const cancelEditRoleButton = document.getElementById('cancel-edit-role-button');
+
+            editRoleButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    document.getElementById('edit-role-name').value = button.dataset.role;
+                    document.getElementById('edit-role-description').value = button.dataset.description;
+                    editRoleModal.classList.add('is-active');
+                });
+            });
+
+            cancelEditRoleButton.addEventListener('click', () => {
+                editRoleModal.classList.remove('is-active');
+            });
+
+            editRoleModal.querySelector('.modal-close').addEventListener('click', () => {
+                editRoleModal.classList.remove('is-active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

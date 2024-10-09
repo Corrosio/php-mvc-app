@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail profilu - Můj Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #e9ecef;
+        }
+        .hero {
+            background-color: #007bff;
+            color: white;
+            padding: 30px 0;
+        }
+        .profile-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .profile-image {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+        .button-icon {
+            margin: 10px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Vycentrování inputu */
+            margin-top: 10px;
+        }
+        .input-group input {
+            flex: 1;
+            max-width: 250px; /* Zúžení input elementu */
+            margin-right: 10px; /* Mezera mezi inputem a tlačítkem */
+        }
+        .current-setting {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Záhlaví -->
+<section class="hero">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">Detail profilu</h1>
+            <p class="subtitle">Upravte své informace</p>
+        </div>
+    </div>
+</section>
+
+<!-- Navigace -->
+<nav class="navbar is-light">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">Můj Blog</a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="#">Domů</a>
+                <a class="navbar-item" href="#">O mně</a>
+                <a class="navbar-item" href="#">Blog</a>
+                <a class="navbar-item" href="#">Kontakt</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hlavní obsah -->
+<div class="container mt-5">
+    <div class="profile-container">
+        <h3 class="title is-4">Profilový obrázek</h3>
+        <div class="has-text-centered">
+            <img src="https://via.placeholder.com/150" alt="Profil" class="profile-image">
+            <div class="file is-small">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="profile-image" accept="image/*">
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">Změnit profilový obrázek</span>
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <h3 class="title is-4">Upravit profil</h3>
+
+        <div class="columns">
+            <div class="column is-half">
+                <!-- Přezdívka -->
+                <div class="field">
+                    <label class="label">Přezdívka&nbsp;[<span class="current-setting">Uzivatel123</span>]</label>
+                    <div class="input-group">
+                        <input class="input" type="text" placeholder="Zadejte novou přezdívku">
+                        <button class="button is-link button-icon">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Změna hesla -->
+                <div class="field">
+                    <label class="label">Změnit heslo</label>
+                    <div class="input-group">
+                        <input class="input" type="password" placeholder="Zadejte nové heslo">
+                        <button class="button is-link button-icon">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-half">
+                <!-- Změna emailu -->
+                <div class="field">
+                    <label class="label">Změnit email&nbsp;[<span class="current-setting">uzivatel@example.com</span>]</label>
+                    <div class="input-group">
+                        <input class="input" type="email" placeholder="Zadejte nový email">
+                        <button class="button is-link button-icon">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Potvrzení hesla</label>
+                    <div class="input-group">
+                        <input class="input" type="password" placeholder="Potvrďte nové heslo">
+                        <button class="button is-link button-icon">
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tlačítko pro zrušení profilu -->
+        <div class="has-text-centered">
+            <button class="button is-danger button-icon">
+                <i class="fas fa-trash"></i> Zrušit profil
+            </button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

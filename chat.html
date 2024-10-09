@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatovací stránka - Můj Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #e9ecef;
+        }
+        .hero {
+            background-color: #007bff;
+            color: white;
+            padding: 30px 0;
+        }
+        .chat-window {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-height: 500px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .message {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .message strong {
+            margin-right: 10px;
+        }
+        .bubble {
+            border-radius: 20px;
+            padding: 10px 15px;
+            max-width: 70%;
+        }
+        .sent {
+            margin-left: auto;
+            background-color: #007bff;
+            color: white;
+        }
+        .received {
+            background-color: #f1f1f1;
+            color: black;
+        }
+        .user-list {
+            margin-top: 20px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .card:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .card-image img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+        .input-group {
+            display: flex;
+            margin-top: 10px;
+        }
+        .input-group input {
+            flex-grow: 1;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        .is-hidden {
+            display: none;
+        }
+        .online-status {
+            color: green;
+            margin-right: 10px;
+        }
+        .pencil-icon {
+            cursor: pointer;
+            color: #007bff;
+            font-size: 20px;
+        }
+        .user-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .pencil-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .pencil-container:hover {
+            background-color: #e9ecef;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Záhlaví -->
+<section class="hero">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">Chatovací stránka</h1>
+            <p class="subtitle">Veřejný a soukromý chat</p>
+        </div>
+    </div>
+</section>
+
+<!-- Navigace -->
+<nav class="navbar is-light">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">Můj Blog</a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="#">Domů</a>
+                <a class="navbar-item" href="#">O mně</a>
+                <a class="navbar-item" href="#">Blog</a>
+                <a class="navbar-item" href="#">Kontakt</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hlavní obsah -->
+<div class="container mt-5">
+    <div class="columns">
+        <div class="column is-two-thirds">
+            <!-- Tabs pro přepínání mezi veřejným a soukromým chatem -->
+            <div class="tabs is-fullwidth">
+                <ul id="chat-tabs">
+                    <li class="is-active" data-target="public-chat"><a href="#">Veřejný chat</a></li>
+                    <li data-target="private-chat"><a href="#">Soukromé zprávy</a></li>
+                </ul>
+            </div>
+
+            <!-- Veřejné chatovací okno -->
+            <div id="public-chat" class="chat-window">
+                <h3 class="title is-5">Veřejný chat</h3>
+                <div class="message">
+                    <img src="https://via.placeholder.com/40" alt="Profil" class="profile-pic">
+                    <div class="bubble received">
+                        <strong>Uživatel 1</strong>
+                        <p>Ahoj všichni!</p>
+                    </div>
+                </div>
+                <div class="message">
+                    <img src="https://via.placeholder.com/40" alt="Profil" class="profile-pic">
+                    <div class="bubble sent">
+                        <strong>Uživatel 2</strong>
+                        <p>Ahoj! Jak se máte?</p>
+                    </div>
+                </div>
+                <div class="message">
+                    <img src="https://via.placeholder.com/40" alt="Profil" class="profile-pic">
+                    <div class="bubble received">
+                        <strong>Uživatel 3</strong>
+                        <p>Skvěle! Díky za optání.</p>
+                    </div>
+                </div>
+                <!-- Další zprávy mohou být přidány zde -->
+            </div>
+
+            <!-- Soukromé chatovací okno -->
+            <div id="private-chat" class="chat-window is-hidden">
+                <h3 class="title is-5">Soukromé zprávy</h3>
+                <div class="message">
+                    <img src="https://via.placeholder.com/40" alt="Profil" class="profile-pic">
+                    <div class="bubble sent">
+                        <strong>Uživatel 1</strong>
+                        <p>Ahoj! Jak se máš?</p>
+                    </div>
+                </div>
+                <div class="message">
+                    <img src="https://via.placeholder.com/40" alt="Profil" class="profile-pic">
+                    <div class="bubble received">
+                        <strong>Uživatel 2</strong>
+                        <p>Mám se dobře, díky!</p>
+                    </div>
+                </div>
+                <!-- Další zprávy mohou být přidány zde -->
+            </div>
+
+            <!-- Input pro posílání zpráv -->
+            <div class="input-group">
+                <input class="input" type="text" placeholder="Napište zprávu...">
+                <button class="button is-link">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Sloupec pro online uživatele -->
+        <div class="column is-one-third">
+            <!-- Vyhledávací input -->
+            <div class="field">
+                <label class="label">Vyhledat uživatele</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Zadejte jméno uživatele">
+                </div>
+            </div>
+
+            <!-- Sekce pro online uživatele -->
+            <div class="user-list">
+                <h3 class="title is-5">Online uživatelé</h3>
+                <div class="card user-item" onclick="openPrivateChat('Uživatel 1')">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://via.placeholder.com/48" alt="Uživatel 1">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-5">Uživatel 1</p>
+                        </div>
+                        <span class="online-status"><i class="fas fa-circle"></i></span>
+                    </div>
+                    <div class="pencil-container">
+                        <i class="fas fa-pencil-alt pencil-icon"></i>
+                    </div>
+                </div>
+                <div class="card user-item" onclick="openPrivateChat('Uživatel 2')">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://via.placeholder.com/48" alt="Uživatel 2">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-5">Uživatel 2</p>
+                        </div>
+                        <span class="online-status"><i class="fas fa-circle"></i></span>
+                    </div>
+                    <div class="pencil-container">
+                        <i class="fas fa-pencil-alt pencil-icon"></i>
+                    </div>
+                </div>
+                <div class="card user-item" onclick="openPrivateChat('Uživatel 3')">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://via.placeholder.com/48" alt="Uživatel 3">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-5">Uživatel 3</p>
+                        </div>
+                        <span class="online-status"><i class="fas fa-circle"></i></span>
+                    </div>
+                    <div class="pencil-container">
+                        <i class="fas fa-pencil-alt pencil-icon"></i>
+                    </div>
+                </div>
+                <!-- Další uživatelé mohou být přidáni zde -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Funkce pro přepínání mezi veřejným a soukromým chatem
+    const tabs = document.querySelectorAll('#chat-tabs li');
+    const chatWindows = document.querySelectorAll('.chat-window');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('is-active'));
+            chatWindows.forEach(window => window.classList.add('is-hidden'));
+
+            tab.classList.add('is-active');
+            const target = tab.getAttribute('data-target');
+            document.getElementById(target).classList.remove('is-hidden');
+        });
+    });
+
+    // Funkce pro otevření soukromého chatu
+    function openPrivateChat(user) {
+        alert(`Otevřít soukromý chat s ${user}`);
+    }
+</script>
+</body>
+</html>

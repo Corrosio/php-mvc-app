@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Náhled článku - Můj Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        body {
+            background-color: #f8f8f8;
+        }
+        .hero {
+            background-color: #007bff;
+            color: white;
+            padding: 30px 0;
+        }
+        .content {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .comment {
+            background-color: #f9f9f9;
+            border-left: 4px solid #007bff;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Záhlaví -->
+<section class="hero">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">Náhled článku</h1>
+            <p class="subtitle">Název článku</p>
+        </div>
+    </div>
+</section>
+
+<!-- Navigace -->
+<nav class="navbar is-light">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">Můj Blog</a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="#">Domů</a>
+                <a class="navbar-item" href="#">O mně</a>
+                <a class="navbar-item" href="#">Blog</a>
+                <a class="navbar-item" href="#">Kontakt</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hlavní obsah -->
+<div class="container mt-5">
+    <div class="columns">
+        <div class="column is-two-thirds">
+            <div class="content">
+                <h2 class="title is-4">Název příspěvku</h2>
+                <p class="subtitle is-6">Autor: Jméno autora | Datum: 1. ledna 2024</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae venenatis odio. Fusce vehicula, felis et malesuada tincidunt, justo eros tincidunt orci, a interdum sapien lectus non nunc. Proin bibendum, libero vel fermentum malesuada, eros ligula gravida dui, et euismod urna dolor eu lectus.</p>
+                <p>Curabitur in orci non quam euismod finibus. Nullam auctor metus et dapibus lacinia. In hac habitasse platea dictumst. Integer quis enim nec libero vestibulum interdum. Sed feugiat fringilla odio, vel interdum enim.</p>
+                <p>Donec pharetra felis nec ante facilisis, in congue augue porttitor. Sed vitae nisl odio. In hac habitasse platea dictumst. Etiam ac nulla non magna malesuada tincidunt.</p>
+                <p>Suspendisse potenti. Aliquam erat volutpat. Aenean vitae orci sed purus gravida consequat. Donec ut efficitur neque, in venenatis elit.</p>
+            </div>
+
+            <!-- Sekce komentářů -->
+            <div class="content mt-5">
+                <h3 class="title is-5">Komentáře</h3>
+
+                <!-- Komentář 1 -->
+                <div class="comment">
+                    <p><strong>Jan Novák:</strong></p>
+                    <p>Skvělý článek! Děkuji za sdílení.</p>
+                </div>
+
+                <!-- Komentář 2 -->
+                <div class="comment">
+                    <p><strong>Marie Svobodová:</strong></p>
+                    <p>Velmi zajímavé postřehy, určitě budu sledovat váš blog.</p>
+                </div>
+
+                <!-- Formulář pro přidání komentáře -->
+                <div class="field">
+                    <label class="label">Přidat komentář</label>
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Napište svůj komentář..."></textarea>
+                    </div>
+                    <div class="control mt-2">
+                        <button class="button is-link">Odeslat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Postranní panel -->
+        <div class="column is-one-third">
+            <h3 class="title is-5">Odkazy</h3>
+            <ul class="menu">
+                <li><a class="menu-item" href="#">Nejnovější příspěvky</a></li>
+                <li><a class="menu-item" href="#">Populární příspěvky</a></li>
+                <li><a class="menu-item" href="#">Kategorie</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Patička -->
+<footer class="footer mt-5">
+    <div class="content has-text-centered">
+        <p>&copy; 2024 Můj Blog. Všechna práva vyhrazena.</p>
+    </div>
+</footer>
+
+</body>
+</html>
