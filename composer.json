@@ -1,0 +1,17 @@
+{
+    "name": "pfort/blog",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Pfort\\Blog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Petr Fořt",
+            "email": "p.fort1990@gmail.com"
+        }
+    ],
+    "require": {}
+}
