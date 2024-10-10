@@ -1,0 +1,38 @@
+version: '3'
+services:
+    web:
+        image: jakubboucek/lamp-devstack-php:debug
+        environment:
+            APP_DEBUG: 1
+            TZ: Europe/Prague
+            PHP_IDE_CONFIG: "serverName=docker-cli"
+            XDEBUG_CONFIG: "client_host=host.docker.internal"
+            # APACHE_DOCUMENT_ROOT: "/var/www/html/www"
+        ports:
+            - "127.0.0.1:8080:80"
+        restart: always
+        volumes:
+            - ".:/var/www/html"
+        depends_on:
+            -   mysqldb
+            -   mailhog
+
+    mysqldb:
+        image: jakubboucek/lamp-devstack-mysql
+        environment:
+            MARIADB_DATABASE: blog_app
+            MARIADB_ROOT_PASSWORD: devstack
+            TZ: Europe/Prague
+        ports:
+            - "127.0.0.1:33060:3306"
+        restart: always
+        volumes:
+            - "./.docker/mysql/data:/var/lib/mysql"
+
+    mailhog:
+        image: "mailhog/mailhog"
+        container_name: "mailhog"
+        ports:
+            -   "127.0.0.1:1025:1025"
+            -   "127.0.0.1:8025:8025"
+        restart: always

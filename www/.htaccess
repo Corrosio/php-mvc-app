@@ -1,0 +1,24 @@
+SetEnv APP_ENV development
+
+# zákaz directory listingu
+Options -Indexes
+
+# cachování souborů 
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpg|jpeg|gif|png|svg|woff2|webp|js|css)$">
+    Header set Cache-Control "max-age=31536000"
+  </FilesMatch>
+</IfModule>
+
+
+RewriteEngine On
+RewriteBase /
+
+# front controller
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule !\.(pdf|js|ico|gif|jpg|png|css|rar|zip|tar\.gz)$ index.php [QSA,L]
+
+# server se soubory, které používají příponu .php nebo .phtml, 
+# bude pracovat jako s php skripty
+AddType application/x-httpd-php .php .phtml
