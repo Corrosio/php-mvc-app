@@ -1,5 +1,6 @@
 {
     "name": "pfort/blog",
+    "description": "Blog",
     "type": "project",
     "license": "MIT",
     "autoload": {
@@ -9,9 +10,9 @@
     },
     "authors": [
         {
-            "name": "Petr Fořt",
-            "email": "p.fort1990@gmail.com"
+            "name": "Fořt Petr"
         }
     ],
+    "minimum-stability": "dev",
     "require": {}
 }
