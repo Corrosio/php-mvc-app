@@ -1,15 +1,23 @@
 <?php
 declare(strict_types=1);
 
-use Pfort\Blog\App\Router\Route;
+use Pfort\Blog\App\Http\Request;
+
+use Pfort\Blog\App\Router\Router;
+use Pfort\Blog\Factories\DiContainerFactory;
+use Pfort\Blog\Factories\RoutesFactory;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$registeredRoutes = \Pfort\Blog\Factories\RoutesFactory::create();
-$request = new \Pfort\Blog\App\Http\Request($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+$registeredRoutes = RoutesFactory::create();
+$request = new Request($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
 
-$router = new \Pfort\Blog\App\Router\Router();
-$route = $router->match($request, $registeredRoutes);
+$container = DiContainerFactory::create();
+
+$router = $container->get(Router::class);
+
+$route = $router->match($request, RoutesFactory::create());
+
 
 if (is_null($route)) {
     echo "neexistující url";
