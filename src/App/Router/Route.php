@@ -40,4 +40,9 @@ readonly final class Route
         return $this->handler;
     }
 
+    public function getRoute(): string
+    {
+        return $this->route;
+    }
+
 }
