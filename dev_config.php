@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 return [
-    'debug' => true,
+    'app' => ['debug' => true],
 
     'database' => [
         'host' => 'localhost',
