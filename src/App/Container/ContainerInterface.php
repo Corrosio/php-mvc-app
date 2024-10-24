@@ -5,5 +5,5 @@ namespace Pfort\Blog\App\Container;
 
 interface ContainerInterface
 {
-    public function get(string $key): object;
+    public function get(string $key): mixed;
 }
