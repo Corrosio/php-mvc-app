@@ -3,16 +3,17 @@ declare(strict_types=1);
 
 namespace Pfort\Blog\App\Router;
 
-readonly final class Route
+final class Route
 {
     private array $params;
 
     public function __construct(
-        private string $route,
-        private string $handler,
-        private array  $routeMethods = ['GET']
+        private readonly string $route,
+        private readonly string $handler,
+        private readonly array $routeMethods = ['GET']
     )
     {
+        $this->params = [];
     }
 
     public function getParams(): array
