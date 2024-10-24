@@ -9,6 +9,8 @@ use Pfort\Blog\App\Http\Request;
 use Pfort\Blog\App\Router\DynamicRouterDecorator;
 use Pfort\Blog\App\Router\Router;
 use Pfort\Blog\Config\Configuration;
+use Pfort\Blog\Dispatcher\DispatcherFactory;
+use Pfort\Blog\Dispatcher\EventDispatcher;
 use Pimple\Container;
 
 final class DiContainerFactory
@@ -17,14 +19,16 @@ final class DiContainerFactory
     {
         return new DiContainer(new Container([
 
-            'config' => fn () => new Configuration(
+            Configuration::class => fn () => new Configuration(
                 ROOT_DIR . '/dev_config.php',
                 ROOT_DIR . '/prod_config.php'
             ),
 
+            EventDispatcher::class => fn () => DispatcherFactory::create(),
+
             'router' => fn () => new Router(),
 
-            'request' => function(Container $container) {
+            Request::class => function(Container $container) {
                 return new Request($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
             },
 
