@@ -13,7 +13,7 @@ final class RoutesFactory
     {
         return new RouteSet([
             new Route('/', 'HomeController::indexAction'),
-            new Route('/about', 'HomeController::aboutAction'),
+            new Route('/about/{num}/{str}', 'HomeController::aboutAction'),
             new Route('/contact', 'HomeController::contactAction'),
             new Route('/blog', 'HomeController::blogAction'),
             new Route('/blog', 'HomeController::blogAction'),
