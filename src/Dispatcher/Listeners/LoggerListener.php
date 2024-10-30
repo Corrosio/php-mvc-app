@@ -7,15 +7,17 @@ use Pfort\Blog\Dispatcher\ListenerInterface;
 
 final class LoggerListener implements ListenerInterface
 {
-    private string $logFile = ROOT_DIR . "/src/tmp/logs/info.log";
+    private string $logFile = ROOT_DIR . "/src/tmp/logs/error.log";
 
     public function subscribe(mixed $payload): void
     {
         $msg = sprintf(
-            "[%s][%s]: %s",
+            "[%s][%s]: %s on line %d ~ %s",
             date('d.m.Y H:i:s'),
-            $payload['type'],
-            $payload['message']
+            $payload['ErrorType'],
+            $payload['ErrorMessage'],
+            $payload['srcLine'],
+            $payload['srcFile'],
         );
 
         file_put_contents($this->logFile, $msg, FILE_APPEND);

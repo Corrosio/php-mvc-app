@@ -9,7 +9,7 @@ final class DispatcherFactory
 {
     public static function create(): EventDispatcher {
         $dispatcher = new EventDispatcher();
-        $dispatcher->addListener('info.log', new LoggerListener);
+        $dispatcher->addListener('error.log', new LoggerListener);
 
         return $dispatcher;
     }
