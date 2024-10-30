@@ -36,6 +36,14 @@ final class Route
         return in_array($method, $this->routeMethods);
     }
 
+    public function getControllerName(): string {
+        return explode('::', $this->getHandler())[0];
+    }
+
+    public function getControllerMethod(): string {
+        return explode('::', $this->getHandler())[1];
+    }
+
     public function  getHandler() : string
     {
         return $this->handler;
