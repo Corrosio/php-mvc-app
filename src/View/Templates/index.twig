@@ -1,0 +1,44 @@
+{% extends "base.layout.twig" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="css/main-styles.css" media="all">
+{% endblock %}
+
+{% block mainBody %}
+
+    <!-- Hlavní obsah -->
+    <div class="container mt-5">
+        <div class="columns">
+            <div class="column is-two-thirds">
+                <h2 class="title">Příspěvky</h2>
+
+                <!-- Příspěvek 1 -->
+                <div class="post">
+                    <h3 class="title is-4">Název příspěvku 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae venenatis odio. Fusce vehicula.</p>
+                    <a href="#" class="button is-link">Číst dál</a>
+                </div>
+
+                <!-- Příspěvek 2 -->
+                <div class="post">
+                    <h3 class="title is-4">Název příspěvku 2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae venenatis odio. Fusce vehicula.</p>
+                    <a href="#" class="button is-link">Číst dál</a>
+                </div>
+
+                <!-- Další příspěvky můžete přidat zde -->
+            </div>
+
+            <!-- Postranní panel -->
+            <div class="column is-one-third">
+                <h3 class="title is-5">Odkazy</h3>
+                <ul class="menu">
+                    <li><a class="menu-item" href="#">Nejnovější příspěvky</a></li>
+                    <li><a class="menu-item" href="#">Populární příspěvky</a></li>
+                    <li><a class="menu-item" href="#">Kategorie</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
