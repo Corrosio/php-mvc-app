@@ -6,10 +6,13 @@ namespace Pfort\Blog\Controllers;
 use Pfort\Blog\App\Controller\BaseController;
 use Pfort\Blog\App\Http\Request;
 
-readonly class HomeController extends BaseController
+final class HomeController extends BaseController
 {
     public function indexAction(): void {
-        echo "Welcome to Home page!!";
+        $this->render('index.twig', [
+            'title' => 'Blog',
+            'subTitle' => 'Vítejte na mém blogu!!',
+        ]);
     }
 
     public function aboutAction(Request $request, $id, $param2): void {

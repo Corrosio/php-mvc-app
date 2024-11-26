@@ -6,8 +6,9 @@ namespace Pfort\Blog\App\Controller;
 use Pfort\Blog\App\Controller\ControllerInterface;
 use Pfort\Blog\App\Exceptions\ControllerException;
 use Pfort\Blog\App\Http\Request;
+use Pfort\Blog\View\ViewFactory;
 
-readonly abstract class BaseController implements ControllerInterface
+abstract class BaseController implements ControllerInterface
 {
 
     /**
@@ -20,5 +21,11 @@ readonly abstract class BaseController implements ControllerInterface
         }
 
         call_user_func([$this, $method], $request, ...$params);
+    }
+
+    protected function render(string $template, array $context = []): void
+    {
+        $view = ViewFactory::create();
+        echo $view->render($template, $context);
     }
 }

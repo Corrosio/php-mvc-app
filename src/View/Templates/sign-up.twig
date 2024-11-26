@@ -1,0 +1,42 @@
+{% extends "base.layout.twig" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="css/sign-up.css" media="all">
+{% endblock %}
+
+{% block mainBody %}
+
+    <!-- Hlavní obsah -->
+    <div class="container mt-5">
+        <div class="login-container">
+            <h3 class="title is-4">Přihlaste se</h3>
+
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="input-group">
+                    <input class="input" type="email" placeholder="Zadejte váš email" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Heslo</label>
+                <div class="input-group">
+                    <input class="input" type="password" placeholder="Zadejte heslo" required>
+                </div>
+            </div>
+
+            <!-- Tlačítko pro přihlášení -->
+            <div class="has-text-centered">
+                <button class="button is-link button-icon">
+                    <i class="fas fa-sign-in-alt"></i> Přihlásit se
+                </button>
+            </div>
+
+            <!-- Odkaz pro obnovení hesla -->
+            <div class="has-text-centered mt-4">
+                <a href="#" class="is-muted">Zapomněli jste heslo?</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

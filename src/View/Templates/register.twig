@@ -1,0 +1,52 @@
+{% extends "base.layout.twig" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="css/register.css" media="all">
+{% endblock %}
+
+{% block mainBody %}
+    <!-- Hlavní obsah -->
+    <div class="container mt-5">
+        <div class="registration-container">
+            <h3 class="title is-4">Zaregistrujte se</h3>
+
+            <div class="field">
+                <label class="label">Uživatelské jméno</label>
+                <div class="input-group">
+                    <input class="input" type="text" placeholder="Zadejte uživatelské jméno" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="input-group">
+                    <input class="input" type="email" placeholder="Zadejte váš email" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Heslo</label>
+                <div class="input-group">
+                    <input class="input" type="password" placeholder="Zadejte heslo" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Potvrďte heslo</label>
+                <div class="input-group">
+                    <input class="input" type="password" placeholder="Potvrďte heslo" required>
+                </div>
+            </div>
+
+            <!-- Tlačítka pro registraci a zrušení -->
+            <div class="has-text-centered">
+                <button class="button is-link button-icon">
+                    <i class="fas fa-user-plus"></i> Registrovat
+                </button>
+                <button class="button is-danger button-icon">
+                    <i class="fas fa-times"></i> Zrušit
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
