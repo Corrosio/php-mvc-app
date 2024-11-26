@@ -14,10 +14,8 @@ final class RoutesFactory
             new Route('/', 'HomeController::indexAction'),
             new Route('/about', 'HomeController::aboutAction'),
             new Route('/contact', 'HomeController::contactAction'),
-            new Route('/blog', 'HomeController::blogAction'),
-            new Route('/blog', 'HomeController::blogAction'),
-            new Route('/blog/edit/{num}', 'HomeController::blogAction'),
-            new Route('/foo/{str}/{num}/{any}', 'HomeController::blogAction'),
+            new Route('/sign-up', 'RegisterController::indexAction'),
+            new Route('/register', 'RegisterController::registerAction'),
         ]);
     }
 }
