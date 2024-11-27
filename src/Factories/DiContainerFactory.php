@@ -11,6 +11,8 @@ use Pfort\Blog\App\Router\Router;
 use Pfort\Blog\Config\Configuration;
 use Pfort\Blog\Dispatcher\DispatcherFactory;
 use Pfort\Blog\Dispatcher\EventDispatcher;
+use Pfort\Blog\View\View;
+use Pfort\Blog\View\ViewFactory;
 use Pimple\Container;
 
 final class DiContainerFactory
@@ -27,6 +29,8 @@ final class DiContainerFactory
             EventDispatcher::class => fn () => DispatcherFactory::create(),
 
             'router' => fn () => new Router(),
+
+            View::class => fn () => ViewFactory::create(),
 
             Request::class => function(Container $container) {
                 return new Request($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
