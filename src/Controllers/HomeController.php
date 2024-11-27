@@ -18,4 +18,9 @@ final class HomeController extends BaseController
     public function aboutAction(Request $request, $id, $param2): void {
         echo sprintf("Incoming params: %s and %s\n", $id, $param2);
     }
+
+    public function testAction(): void
+    {
+        var_dump($this->request);
+    }
 }
