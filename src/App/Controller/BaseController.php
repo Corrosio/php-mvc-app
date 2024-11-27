@@ -3,13 +3,18 @@ declare(strict_types=1);
 
 namespace Pfort\Blog\App\Controller;
 
-use Pfort\Blog\App\Controller\ControllerInterface;
 use Pfort\Blog\App\Exceptions\ControllerException;
 use Pfort\Blog\App\Http\Request;
-use Pfort\Blog\View\ViewFactory;
+use Pfort\Blog\View\View;
+
 
 abstract class BaseController implements ControllerInterface
 {
+    #[Inject(View::class)]
+    protected View $view;
+
+    #[Inject(Request::class)]
+    protected Request $request;
 
     /**
      * @throws ControllerException
@@ -25,7 +30,6 @@ abstract class BaseController implements ControllerInterface
 
     protected function render(string $template, array $context = []): void
     {
-        $view = ViewFactory::create();
-        echo $view->render($template, $context);
+        echo $this->view->render($template, $context);
     }
 }

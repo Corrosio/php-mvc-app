@@ -28,23 +28,53 @@ readonly final class ControllerFactory
         }
 
         $reflection = new \ReflectionClass($controllerClass);
+        $controllerInstance = $this->createInstance($reflection);
+        $this->injectProperties($reflection, $controllerInstance);
+
+        return new ControllerProxy($controllerInstance);
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    private function createInstance(\ReflectionClass $reflection): ControllerInterface
+    {
         $constructor = $reflection->getConstructor();
 
         if (is_null($constructor)) {
-            return new $controllerClass();
-        }
+            $instance = $reflection->newInstance();
+        } else {
+            $dependencies = [];
+            $parameters = $constructor->getParameters();
+            foreach ($parameters as $parameter) {
+                $paramType = $parameter->getType();
 
-        $dependencies = [];
-        $parameters = $constructor->getParameters();
-        foreach ($parameters as $parameter) {
-            $paramType = $parameter->getType();
-
-            if ($paramType instanceof \ReflectionNamedType && !$paramType->isBuiltin()) {
-                $dependencies[] = $this->container->get($paramType->getName());
+                if ($paramType instanceof \ReflectionNamedType && !$paramType->isBuiltin()) {
+                    $dependencies[] = $this->container->get($paramType->getName());
+                }
             }
-        }
 
-        $instance = $reflection->newInstanceArgs($dependencies);
-        return new ControllerProxy($instance);
+            $instance = $reflection->newInstanceArgs($dependencies);
+        }
+        return $instance;
+    }
+
+    private function injectProperties(\ReflectionClass $reflection, ControllerInterface &$controller): void
+    {
+        do {
+            $properties = $reflection->getProperties();
+            if (!empty($properties)) {
+                foreach ($properties as $property) {
+                    $attributes = $property->getAttributes(Inject::class);
+                    foreach ($attributes as $attribute) {
+                        $attrInstance = $attribute->newInstance();
+                        $service = $this->container->get($attrInstance->getServiceName());
+                        $property->setValue($controller, $service);
+                    }
+                }
+            }
+
+
+        } while ($reflection = $reflection->getParentClass());
     }
 }

@@ -13,6 +13,7 @@ final class RoutesFactory
         return new RouteSet([
             new Route('/', 'HomeController::indexAction'),
             new Route('/about', 'HomeController::aboutAction'),
+            new Route('/test', 'HomeController::testAction'),
             new Route('/contact', 'HomeController::contactAction'),
             new Route('/sign-up', 'RegisterController::indexAction'),
             new Route('/register', 'RegisterController::registerAction'),
