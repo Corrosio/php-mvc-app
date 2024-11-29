@@ -5,8 +5,10 @@ return [
     'app' => ['debug' => true],
 
     'database' => [
-        'host' => 'localhost',
-        'user' => 'root',
-        'password' => 'root',
+        'host' => 'mysqldb',
+        'username' => 'root',
+        'password' => 'devstack',
+        'databaseName' => 'blog_app',
+        'charset' => 'utf8',
     ],
 ];
