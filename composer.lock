@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ed1fdd7ef7bc36ebcf71e26b6687431",
+    "content-hash": "ce0f5c4ea88865af933da15e4f8da568",
     "packages": [
         {
             "name": "pimple/pimple",
@@ -425,12 +425,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "75751250cc8b6efd53495dfbdd50a4d424c75caa"
+                "reference": "4e1cbc74effd2b940316666c8334b63e2d0cdcf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/75751250cc8b6efd53495dfbdd50a4d424c75caa",
-                "reference": "75751250cc8b6efd53495dfbdd50a4d424c75caa",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/4e1cbc74effd2b940316666c8334b63e2d0cdcf5",
+                "reference": "4e1cbc74effd2b940316666c8334b63e2d0cdcf5",
                 "shasum": ""
             },
             "require": {
@@ -441,6 +441,7 @@
                 "symfony/polyfill-php81": "^1.29"
             },
             "require-dev": {
+                "phpstan/phpstan": "^2.0",
                 "psr/container": "^1.0|^2.0",
                 "symfony/phpunit-bridge": "^5.4.9|^6.4|^7.0"
             },
@@ -497,7 +498,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-30T12:17:12+00:00"
+            "time": "2024-11-29T08:29:04+00:00"
         }
     ],
     "packages-dev": [],
@@ -506,7 +507,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-pdo": "*"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }
